@@ -4,6 +4,7 @@ using std::string;
 #include<iostream>
 using std::cout;
 using std::endl;
+
 /**************************************************************Parents***********************************************************************/
 
 Parents::Parents(string greetings, int cash) {
@@ -15,10 +16,10 @@ Parents::Parents(string greetings, int cash) {
 void Parents::request(bool Top_Secret, bool Rowdy) {
 	if (!Top_Secret && !Rowdy)
 	{
-		cout << _Warm_Greetings << " I transferred " << _money << " into your account";
+		cout << _Warm_Greetings << " I transferred " << _Money << " into your account" << endl;
 	}
 	else if (next != nullptr) { // Passes it on to the next in the chain
-		next->request(bool secret, bool rowdy);
+	next->request(Top_Secret, Rowdy);
 	}
 	else
 	{
@@ -38,10 +39,10 @@ void Friends::request(bool Top_Secret, bool Rowdy) {
 
  if (Rowdy && !Top_Secret)//friends
 	{
-		cout << _Rowdy_Joke << " Hey everyone lets get together at " << _Meetup_Place << " on the " << _Meetup_Date;
+		cout << _Rowdy_Joke << " Hey everyone lets get together at " << _Meetup_Place << " on the " << _Meetup_Date << endl;
 	}
 	else if (next != nullptr) { // Passes it on to the next in the chain
-		next->request(bool secret, bool rowdy);
+		next->request( Top_Secret, Rowdy);
 	}
 	else
 	{
@@ -59,15 +60,15 @@ Mistress::Mistress(string location, string time) {
 // Handles incoming request
 void Mistress::request(bool Top_Secret, bool Rowdy) {
 
-	 if (Top_Secret)//mistress
+	 if (Top_Secret && !Rowdy)//mistress
 	{
-		cout << "Meet me at " << _Hotel << " at " << _Time;
+		cout << "Meet me at " << _Hotel << " at " << _Time << endl;
 	}
 	 else if (next != nullptr) { // Passes it on to the next in the chain
-		 next->request(bool secret, bool rowdy);
+		 next->request( Top_Secret, Rowdy);
 	 }
 	else
 	{
-		cout << "Can't handle this Message";
+		cout << "Can't handle this Message" << endl;
 	}
 }
