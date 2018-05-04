@@ -1,5 +1,9 @@
 #include "Special_Handlers.h"
-
+#include<string>
+using std::string;
+#include<iostream>
+using std::cout;
+using std::endl;
 /**************************************************************Parents***********************************************************************/
 
 Parents::Parents(string greetings, int cash) {
